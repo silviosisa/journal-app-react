@@ -3,9 +3,18 @@ import {firebase, googleAuthProvider} from "../firebase/firebase-config";
 
 export const startLoginEmailPassword = (email, password) => {
     return (dispatch) => {
-        setTimeout(() => {
-            dispatch(login(email, password));
-        }, 3000)
+        firebase.auth().signInWithEmailAndPassword(email, password)
+            .then(({user}) => {
+                console.log(user);
+                dispatch(
+                    login(user.uid, user.displayName)
+                )
+            }).catch( e => {
+            console.log(e);
+        })
+        // setTimeout(() => {
+        //     dispatch(login(email, password));
+        // }, 3000)
     }
 }
 
