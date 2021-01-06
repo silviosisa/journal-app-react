@@ -16,7 +16,7 @@ export const startLoginEmailPassword = (email, password) => {
             }).catch( e => {
                console.log(e);
                dispatch(uiFinishLoading());
-               Swal.fire()
+               Swal.fire('Error', e.message, 'error');
         })
     }
 }
@@ -54,6 +54,7 @@ export const startRegisterWithEmailPasswordName = (email, password, name) => {
                 )
             }).catch( e => {
                 console.log(e);
+               Swal.fire('Error', e.message, 'error');
         })
     }
 }
