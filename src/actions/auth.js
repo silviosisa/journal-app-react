@@ -1,4 +1,5 @@
 import {types} from "../types/types";
+import Swal from 'sweetalert2';
 import {firebase, googleAuthProvider} from "../firebase/firebase-config";
 import {uiFinishLoading, uiStartLoading} from "./ui";
 
@@ -13,13 +14,10 @@ export const startLoginEmailPassword = (email, password) => {
                 )
 
             }).catch( e => {
-            console.log(e);
-
+               console.log(e);
+               dispatch(uiFinishLoading());
+               Swal.fire()
         })
-        dispatch(uiFinishLoading());
-        // setTimeout(() => {
-        //     dispatch(login(email, password));
-        // }, 3000)
     }
 }
 
