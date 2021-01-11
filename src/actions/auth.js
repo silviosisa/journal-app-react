@@ -14,7 +14,6 @@ export const startLoginEmailPassword = (email, password) => {
                 )
 
             }).catch( e => {
-               console.log(e);
                dispatch(uiFinishLoading());
                Swal.fire('Error', e.message, 'error');
         })
